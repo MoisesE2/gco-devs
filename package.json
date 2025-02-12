@@ -4,9 +4,8 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "start": "serve -s dist -p 80",
-    "build": "tsc -b && vite build",
+    "dev": "concurrently \"vite\" \"npm run server\"",
+    "build": "tsc && vite build",    
     "lint": "eslint .",
     "preview": "vite preview"
   },
