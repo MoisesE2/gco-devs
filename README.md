@@ -1,4 +1,4 @@
-# Meu Site Angular + Tailwind CSS
+# GCO DEVS
 
 Este projeto utiliza **Angular** com **Tailwind CSS** para criar uma interface moderna e responsiva. Siga as instruções abaixo para abrir, editar e gerenciar bibliotecas no projeto.
 
