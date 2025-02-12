@@ -1,27 +1,79 @@
-# GcoDevs
+# Meu Site Angular + Tailwind CSS
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.11.
+Este projeto utiliza **Angular** com **Tailwind CSS** para criar uma interface moderna e responsiva. Siga as instruções abaixo para abrir, editar e gerenciar bibliotecas no projeto.
 
-## Development server
+---
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## 🚀 Como Abrir o Projeto
 
-## Code scaffolding
+### **1. Pré-requisitos**
+Antes de começar, certifique-se de ter instalado:
+- [Node.js](https://nodejs.org/) (versão 16 ou superior)
+- [Angular CLI](https://angular.io/cli) (caso não tenha, instale com `npm install -g @angular/cli`)
+- Um editor de código, como [VS Code](https://code.visualstudio.com/)
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+### **2. Clonar o Repositório**
+Se estiver usando Git, clone o repositório com:
 
-## Build
+```bash
+git clone https://github.com/seu-usuario/meu-site-angular.git
+cd meu-site-angular
+```
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+Ou simplesmente baixe o ZIP e extraia os arquivos.
 
-## Running unit tests
+### **3. Instalar as Dependências**
+Execute o seguinte comando para instalar as bibliotecas necessárias:
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+```bash
+npm install
+```
 
-## Running end-to-end tests
+### **4. Rodar o Projeto**
+Para iniciar o servidor de desenvolvimento:
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+```bash
+ng serve
+```
 
-## Further help
+Acesse **http://localhost:4200/** no navegador para visualizar o projeto em execução.
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+---
+### **1. Bibliotecas Angular**
+Caso precise adicionar ou atualizar bibliotecas, utilize os seguintes comandos:
+
+- **Instalar uma nova biblioteca:**
+  ```bash
+  npm install nome-da-biblioteca
+  ```
+- **Remover uma biblioteca:**
+  ```bash
+  npm uninstall nome-da-biblioteca
+  ```
+- **Atualizar as bibliotecas:**
+  ```bash
+  ng update
+  ```
+
+---
+
+## 🔥 Build para Produção
+Para gerar os arquivos otimizados para produção, execute:
+
+```bash
+ng build --configuration=production
+```
+
+Os arquivos serão gerados na pasta `dist/`, prontos para serem publicados em um servidor.
+
+---
+
+## 🤝 Contribuição
+Se quiser contribuir com melhorias, siga os passos:
+1. Faça um **fork** do projeto
+2. Crie uma **branch** para sua feature (`git checkout -b minha-feature`)
+3. Faça as alterações e **commite** (`git commit -m 'Minha melhoria'`)
+4. Faça um **push** para seu repositório (`git push origin minha-feature`)
+5. Abra um **Pull Request**
+
+---
