@@ -123,30 +123,39 @@ const Banner = () => {
 };
 
 // Reasons Component
-const Reasons = () => {
-  const reasons = Array.from({ length: 10 }, (_, i) => ({
-    id: i + 1,
-    title: `Motivo ${i + 1}`,
-    description: `Descrição do motivo ${i + 1} para ter um site.`,
-  }));
 
+const reasons = [
+  { id: 1, title: "Credibilidade e Profissionalismo", description: "Ter um site transmite confiança e profissionalismo para seus clientes." },
+  { id: 2, title: "Disponibilidade 24/7", description: "Seu negócio está sempre acessível, independente do horário." },
+  { id: 3, title: "Alcance Global", description: "Atraia clientes de qualquer lugar do mundo, sem limitações geográficas." },
+  { id: 4, title: "Marketing Digital e SEO", description: "Apareça no Google e atraia mais visitantes por meio de estratégias otimizadas." },
+  { id: 5, title: "Geração de Leads e Vendas", description: "Capte leads e automatize vendas com formulários e chatbots." },
+  { id: 6, title: "Centralização das Informações", description: "Disponibilize todas as informações do seu negócio em um só lugar." },
+  { id: 7, title: "Concorrência já tem um site", description: "Não fique para trás, garanta sua presença digital." },
+  { id: 8, title: "Menor Custo a Longo Prazo", description: "Um site gera resultados contínuos sem altos investimentos em anúncios." },
+  { id: 9, title: "Interação com Redes Sociais", description: "Integre seu site com redes sociais para ampliar o engajamento." },
+  { id: 10, title: "Expansão do Negócio", description: "Escale seu negócio com facilidade e alcance mais clientes." },
+];
+const Reasons = () => {
   return (
-    <section id="reasons" className="py-20">
+    <section id="reasons" className="py-20 bg-gray-100">
       <div className="container mx-auto px-6">
-        <h2 className="text-3xl font-bold mb-12 text-center">
+        <h2 className="text-3xl font-bold mb-12 text-center text-gray-800">
           10 Motivos para ter um site
         </h2>
         <div className="grid md:grid-cols-2 gap-6">
-          {reasons.map((reason) => (
+          {reasons.map((reason, index) => (
             <motion.div
               key={reason.id}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-              className="p-6 bg-white rounded-lg shadow-sm"
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              className="p-6 bg-white rounded-lg shadow-md"
             >
-              <h3 className="text-xl font-semibold mb-3">{reason.title}</h3>
-              <p className="text-gray-600">{reason.description}</p>
+              <h3 className="text-xl font-semibold mb-2 text-blue-600">
+                {reason.title}
+              </h3>
+              <p className="text-gray-700">{reason.description}</p>
             </motion.div>
           ))}
         </div>
@@ -154,6 +163,7 @@ const Reasons = () => {
     </section>
   );
 };
+
 
 // Contact Form Component
 const ContactForm = () => {
