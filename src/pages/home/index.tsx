@@ -7,6 +7,7 @@ import { Link } from "react-scroll";
 import "swiper/css";
 import { FormData, TeamMember } from "../../types";
 
+
 const HomePage = () => {
   return (
     <div className="scroll-smooth font-sans">
