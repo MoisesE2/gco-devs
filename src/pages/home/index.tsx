@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { Swiper, SwiperSlide } from "swiper/react";
 import { useForm } from "react-hook-form";
 import {
   Bars3Icon,
@@ -14,6 +13,9 @@ import {
 } from "@heroicons/react/24/solid";
 import { Link } from "react-scroll";
 import "swiper/css";
+import Footer from "../../components/Footer";
+import Newsletter from "../../components/Newsletter";
+import Team from "../../components/Team";
 
 type FormData = {
   name: string;
@@ -24,13 +26,7 @@ type FormData = {
   message: string;
 };
 
-type TeamMember = {
-  id: number;
-  name: string;
-  role: string;
-  image: string;
-  qualifications: string[];
-};
+
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -494,156 +490,10 @@ const ContactForm = () => {
   );
 };
 
-const Team = () => {
-  const teamMembers: TeamMember[] = [
-    {
-      id: 1,
-      name: "João Silva",
-      role: "Desenvolvedor Front-end",
-      image: "https://via.placeholder.com/150",
-      qualifications: ["React", "TypeScript", "Tailwind CSS"],
-    },
-    {
-      id: 2,
-      name: "Maria Souza",
-      role: "UI/UX Designer",
-      image: "https://via.placeholder.com/150",
-      qualifications: ["Figma", "Adobe XD", "Prototipagem"],
-    },
-    {
-      id: 3,
-      name: "Moisés Costa",
-      role: "Full Stack Developer",
-      image: "https://via.placeholder.com/150",
-      qualifications: ["Node.js", "Python", "SQL"],
-    },
-  ];
 
-  return (
-    <section id="team" className="py-20 bg-gray-800 dark:bg-gray-900">
-      <div className="container mx-auto px-6">
-        <h2 className="text-4xl font-bold mb-16 text-center text-white">
-          Nossa Equipe
-        </h2>
-        <Swiper
-          spaceBetween={30}
-          slidesPerView={1}
-          breakpoints={{
-            640: { slidesPerView: 2 },
-            1024: { slidesPerView: 3 },
-          }}
-          loop={true}
-          className="pb-12"
-        >
-          {teamMembers.map((member) => (
-            <SwiperSlide key={member.id}>
-              <div className="p-8 text-center bg-gray-700 rounded-2xl dark:bg-gray-800 hover:transform hover:scale-105 transition-all duration-300 h-full">
-                <div className="mb-6">
-                  <img
-                    src={member.image}
-                    alt={member.name}
-                    className="w-40 h-40 rounded-full mx-auto object-cover border-4 border-blue-500"
-                    loading="lazy"
-                  />
-                </div>
-                <h3 className="text-2xl font-semibold text-white mb-2">
-                  {member.name}
-                </h3>
-                <p className="text-blue-400 mb-4 font-medium">{member.role}</p>
-                <div className="flex flex-wrap justify-center gap-2">
-                  {member.qualifications.map((qualification, index) => (
-                    <span
-                      key={index}
-                      className="px-3 py-1 bg-gray-600 dark:bg-gray-700 rounded-full text-sm text-gray-200"
-                    >
-                      {qualification}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            </SwiperSlide>
-          ))}
-        </Swiper>
-      </div>
-    </section>
-  );
-};
 
-const Newsletter = () => {
-  const [email, setEmail] = useState("");
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    console.log("Email inscrito:", email);
-    setEmail("");
-  };
 
-  return (
-    <section className="py-20 bg-gray-800 dark:bg-gray-900">
-      <div className="container mx-auto px-6 max-w-2xl text-center">
-        <h2 className="text-3xl font-bold mb-6 text-gray-100">Newsletter</h2>
-        <p className="text-gray-300 mb-8">
-          Inscreva-se para receber promoções e novidades.
-        </p>
-        <form onSubmit={handleSubmit} className="flex gap-4">
-          <input
-            type="email"
-            placeholder="Seu email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            className="flex-1 p-3 border rounded-lg bg-gray-700 border-gray-600 text-gray-100"
-            required
-          />
-          <button
-            type="submit"
-            className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition dark:bg-blue-700 dark:hover:bg-blue-800"
-          >
-            Inscrever
-          </button>
-        </form>
-      </div>
-    </section>
-  );
-};
-
-const Footer = () => {
-  return (
-    <footer className="bg-gray-800 dark:bg-gray-900 text-gray-300 py-12">
-      <div className="container mx-auto px-6 grid md:grid-cols-3 gap-8">
-        <div>
-          <h3 className="text-xl font-bold mb-4 text-gray-100">Contato</h3>
-          <p>Email: contato@empresa.com</p>
-          <p>Telefone: (85) 99844-4203</p>
-        </div>
-        <div>
-          <h3 className="text-xl font-bold mb-4 text-gray-100">Horário</h3>
-          <p>Segunda a Sexta: 9h às 18h</p>
-        </div>
-        <div>
-          <h3 className="text-xl font-bold mb-4 text-gray-100">
-            Redes Sociais
-          </h3>
-          <div className="flex gap-4">
-            <a
-              href="#"
-              className="hover:text-blue-400 transition"
-              aria-label="Facebook"
-            >
-              Facebook
-            </a>
-            <a
-              href="#"
-              className="hover:text-blue-400 transition"
-              aria-label="Instagram"
-            >
-              Instagram
-            </a>
-          </div>
-        </div>
-      </div>
-    </footer>
-  );
-};
 
 const HomePage = () => {
   return (
