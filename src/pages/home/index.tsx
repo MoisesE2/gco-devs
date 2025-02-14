@@ -1,9 +1,9 @@
-function HomePage() {
+const index = () => {
     return (
         <div>
-            <h1>Hello World 2</h1>
+            
         </div>
     );
-}
+};
 
-export default HomePage;
+export default index;
