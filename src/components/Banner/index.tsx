@@ -7,7 +7,7 @@ interface BannerProps {
 
 const Banner: React.FC<BannerProps> = ({ scrollToContact }) => {
   return (
-    <section id="banner" className="pt-32 pb-24 bg-indigo-50 dark:bg-gray-800">
+    <section id="banner" className="pt-32 pb-24" style={{ backgroundColor: "#101828" }}>
       <div className="container mx-auto px-6">
         <motion.div
           initial={{ y: 50, opacity: 0 }}
@@ -15,11 +15,11 @@ const Banner: React.FC<BannerProps> = ({ scrollToContact }) => {
           transition={{ duration: 0.8 }}
           className="max-w-3xl mx-auto text-center"
         >
-          <h1 className="text-4xl md:text-5xl font-bold mb-6 text-gray-800 dark:text-gray-100">
+          <h1 className="text-4xl md:text-5xl font-bold mb-6 text-white">
             Crie seu site profissional conosco
           </h1>
 
-          <p className="text-lg text-gray-600 dark:text-gray-300 mb-8 leading-relaxed">
+          <p className="text-lg text-gray-300 mb-8 leading-relaxed">
             Transforme sua presença online com soluções web sob medida
           </p>
 
@@ -52,7 +52,7 @@ const Banner: React.FC<BannerProps> = ({ scrollToContact }) => {
 
       <style jsx>{`
         .cssbuttons-io-button {
-          background: #4f46e5; /* Cor indigo-600 */
+          background: #2563eb; /* Cor azul-600 */
           color: white;
           padding: 0.35em;
           padding-left: 1.2em;
@@ -63,7 +63,7 @@ const Banner: React.FC<BannerProps> = ({ scrollToContact }) => {
           letter-spacing: 0.05em;
           display: flex;
           align-items: center;
-          box-shadow: inset 0 0 1.6em -0.6em #4338ca; /* Cor indigo-700 */
+          box-shadow: inset 0 0 1.6em -0.6em #1d4ed8; /* Cor azul-700 */
           overflow: hidden;
           position: relative;
           height: 2.8em;
@@ -81,7 +81,7 @@ const Banner: React.FC<BannerProps> = ({ scrollToContact }) => {
           height: 2.2em;
           width: 2.2em;
           border-radius: 0.7em;
-          box-shadow: 0.1em 0.1em 0.6em 0.2em #4338ca; /* Cor indigo-700 */
+          box-shadow: 0.1em 0.1em 0.6em 0.2em #1d4ed8; /* Cor azul-700 */
           right: 0.3em;
           transition: all 0.3s;
         }
@@ -93,7 +93,7 @@ const Banner: React.FC<BannerProps> = ({ scrollToContact }) => {
         .cssbuttons-io-button .icon svg {
           width: 1.1em;
           transition: transform 0.3s;
-          color: #4f46e5; /* Cor indigo-600 */
+          color: #2563eb; /* Cor azul-600 */
         }
 
         .cssbuttons-io-button:hover .icon svg {
