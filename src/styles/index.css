@@ -1,1 +1,54 @@
 @import "tailwindcss";
+.radio-input {
+    --active-color: #435dd8;
+    --inactive-color: #2d3750;
+  }
+  
+  .radio-input .label {
+    padding: 12px 20px;
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    border: 2px solid var(--inactive-color);
+    transition: all 0.3s ease;
+  }
+  
+  .radio-input .label:hover {
+    border-color: var(--active-color);
+    background-color: #2a2e3c;
+  }
+  
+  .radio-input .label input:checked ~ span:first-child {
+    background-color: var(--active-color);
+    border-color: var(--active-color);
+  }
+  
+  .radio-input .label input:checked ~ span:first-child::before {
+    content: "";
+    width: 6px;
+    height: 6px;
+    background: white;
+    border-radius: 50%;
+    position: absolute;
+  }
+  
+  .radio-input .label input:checked ~ span.text {
+    color: white;
+  }
+  
+  .radio-input .label input:checked + .label {
+    background-color: var(--active-color);
+    border-color: var(--active-color);
+  }
+  @keyframes checkAnim {
+    from {
+      transform: scale(0);
+    }
+    to {
+      transform: scale(1);
+    }
+  }
+  
+  input[type="checkbox"]:checked + span span {
+    animation: checkAnim 0.2s ease-in-out;
+  }

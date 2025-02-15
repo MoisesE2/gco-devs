@@ -69,7 +69,7 @@ const Diferenciais = () => {
             para o seu negócio.
           </p>
           <div className="inline-block p-4 bg-blue-50 dark:bg-blue-900/20 rounded-lg">
-            <p className="moving-gradient font-medium text-transparent bg-clip-text bg-gradient-to-r from-[#729ed0] to-[#463bd1] animate-gradient">
+            <p className="moving-gradient font-medium text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600 animate-gradient">
               "Sua presença online merece a excelência que só profissionais
               dedicados podem oferecer!"
             </p>
@@ -84,7 +84,7 @@ const Diferenciais = () => {
           content: "";
           width: 20%;
           height: 20%;
-          background: rgba(70, 59, 209, 0.1);
+          background: rgba(147, 51, 234, 0.1); /* Cor roxo-600 com 10% de opacidade */
           transition: all 0.5s;
         }
 
@@ -105,7 +105,7 @@ const Diferenciais = () => {
           width: 100%;
           height: 100%;
           border-radius: 15px;
-          background: rgba(70, 59, 209, 0.1);
+          background: rgba(147, 51, 234, 0.1);
         }
 
         .card:hover .icon-container,
@@ -123,10 +123,10 @@ const Diferenciais = () => {
 
         @keyframes gradientMove {
           0% {
-            stop-color: #729ed0;
+            stop-color: #2563eb; /* Azul-600 */
           }
           100% {
-            stop-color: #463bd1;
+            stop-color: #9333ea; /* Roxo-600 */
           }
         }
 
@@ -138,11 +138,11 @@ const Diferenciais = () => {
 
       <svg width="0" height="0" aria-hidden="true">
         <linearGradient id="gradient" gradientTransform="rotate(90)">
-          <stop offset="0%" stopColor="#729ed0">
-            <animate attributeName="stop-color" values="#729ed0;#463bd1;#729ed0" dur="3s" repeatCount="indefinite" />
+          <stop offset="0%" stopColor="#2563eb"> {/* Azul-600 */}
+            <animate attributeName="stop-color" values="#2563eb;#9333ea;#2563eb" dur="3s" repeatCount="indefinite" />
           </stop>
-          <stop offset="100%" stopColor="#463bd1">
-            <animate attributeName="stop-color" values="#463bd1;#729ed0;#463bd1" dur="3s" repeatCount="indefinite" />
+          <stop offset="100%" stopColor="#9333ea"> {/* Roxo-600 */}
+            <animate attributeName="stop-color" values="#9333ea;#2563eb;#9333ea" dur="3s" repeatCount="indefinite" />
           </stop>
         </linearGradient>
       </svg>

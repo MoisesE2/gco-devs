@@ -210,13 +210,13 @@ const ContactForm = forwardRef<HTMLElement, unknown>((props, ref) => {
               ].map((service) => (
                 <label
                   key={service}
-                  className="flex items-center space-x-3 cursor-pointer"
+                  className="relative flex items-center p-3 cursor-pointer rounded-lg border-2 border-[#2d3750] transition-all has-[:checked]:border-[#435dd8] has-[:checked]:bg-[#2d3750] hover:border-[#435dd8] hover:bg-[#2a2e3c]"
                 >
                   <input
                     type="checkbox"
                     value={service}
                     {...register("services")}
-                    className="h-5 w-5 text-blue-600 rounded border-gray-300 dark:bg-gray-700"
+                    className="sr-only" // Esconde o input mas mantém a acessibilidade
                   />
                   <span className="text-white dark:text-white">{service}</span>
                 </label>
