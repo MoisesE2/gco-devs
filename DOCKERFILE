@@ -1,0 +1,17 @@
+# Usa uma imagem do Node.js
+FROM node:18-alpine
+
+# Define o diretório de trabalho dentro do container
+WORKDIR /app
+
+# Copia os arquivos do projeto para dentro do container
+COPY . .
+
+# Instala as dependências e cria o build
+RUN npm install && npm run build
+
+# Expõe a porta padrão do Vite
+EXPOSE 4173
+
+# Comando para rodar o preview do Vite
+CMD ["npm", "run", "preview"]
