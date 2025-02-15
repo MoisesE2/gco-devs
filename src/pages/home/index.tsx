@@ -9,16 +9,25 @@ import Banner from "../../components/Banner";
 import Header from "../../components/Header";
 import { motion } from "framer-motion";
 import { ChatBubbleOvalLeftIcon } from "@heroicons/react/24/solid";
+import { useRef } from "react";
 
 const HomePage = () => {
+
+  const contactFormRef = useRef<HTMLDivElement>(null);
+
+  const scrollToContact = () => {
+    if (contactFormRef.current) {
+      contactFormRef.current.scrollIntoView({ behavior: "smooth" });
+    }
+  };
   return (
     <div className="scroll-smooth font-sans dark:bg-gray-900">
       <Header />
       <main>
-        <Banner />
+      <Banner scrollToContact={scrollToContact} />
         <Diferenciais />
         <Reasons />
-        <ContactForm />
+        <ContactForm ref={contactFormRef} />
         <Team />
         <Newsletter />
       </main>

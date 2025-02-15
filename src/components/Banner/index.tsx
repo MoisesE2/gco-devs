@@ -1,6 +1,11 @@
+import React from "react";
 import { motion } from "framer-motion";
 
-const Banner = () => {
+interface BannerProps {
+  scrollToContact: () => void;
+}
+
+const Banner: React.FC<BannerProps> = ({ scrollToContact }) => {
   return (
     <section id="banner" className="pt-32 pb-24 bg-indigo-50 dark:bg-gray-800">
       <div className="container mx-auto px-6">
@@ -23,6 +28,7 @@ const Banner = () => {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="cssbuttons-io-button"
+              onClick={scrollToContact} // Rola até o ContactForm
             >
               Solicitar Orçamento
               <div className="icon">

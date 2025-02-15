@@ -12,7 +12,7 @@ const Header = () => {
     const navItems = [
       { name: "Home", target: "banner" },
       { name: "Motivos", target: "reasons" },
-      { name: "Contato", target: "contact" },
+      { name: "Solicitar Orçamento", target: "contact" },
       { name: "Equipe", target: "team" },
     ];
   

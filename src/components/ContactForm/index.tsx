@@ -1,3 +1,4 @@
+import { forwardRef } from 'react';
 import { useForm } from 'react-hook-form';
 
 type FormData = {
@@ -9,7 +10,7 @@ type FormData = {
   message: string;
 };
 
-const ContactForm = () => {
+const ContactForm = forwardRef<HTMLElement, unknown>((props, ref) => {
   const {
     register,
     handleSubmit,
@@ -40,7 +41,7 @@ const ContactForm = () => {
   };
 
   return (
-    <section id="contact" className="py-20 bg-gray-50 dark:bg-gray-800">
+    <section ref={ref} id="contact" className="py-20 bg-gray-50 dark:bg-gray-800">
       <div className="container mx-auto px-6 max-w-2xl">
         <h2 className="text-3xl font-bold mb-12 text-center dark:text-gray-100">
           Faça Seu Orçamento Conosco
@@ -152,6 +153,6 @@ const ContactForm = () => {
       </div>
     </section>
   );
-};
+});
 
 export default ContactForm;
