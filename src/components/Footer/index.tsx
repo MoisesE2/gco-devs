@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { FiFacebook, FiInstagram, FiLinkedin } from 'react-icons/fi'
+import { FiFacebook, FiInstagram} from 'react-icons/fi'
 
 export default function Footer() {
   const items = {
@@ -35,11 +35,10 @@ export default function Footer() {
             <div className="space-y-2">
               <p>+55 (85) 98444-0203</p>
               <p>+55 (85) 99844-4203</p>
-              <p>goodevelopers@gmail.com</p>
+              <p>gcodevelopers@gmail.com</p>
               <div className="flex space-x-4 mt-4">
                 <FiFacebook className="text-2xl hover:text-blue-500 cursor-pointer" />
                 <FiInstagram className="text-2xl hover:text-pink-500 cursor-pointer" />
-                <FiLinkedin className="text-2xl hover:text-blue-400 cursor-pointer" />
               </div>
             </div>
           </motion.div>
