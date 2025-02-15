@@ -1,5 +1,5 @@
-import { forwardRef, useState } from 'react';
-import { useForm } from 'react-hook-form';
+import { useForm } from "react-hook-form";
+import { useState } from "react";
 
 type FormData = {
   name: string;
@@ -10,7 +10,7 @@ type FormData = {
   message: string;
 };
 
-const ContactForm = forwardRef<HTMLElement, unknown>((props, ref) => {
+const ContactForm = () => {
   const {
     register,
     handleSubmit,
@@ -48,6 +48,31 @@ const ContactForm = forwardRef<HTMLElement, unknown>((props, ref) => {
     e.target.style.height = e.target.scrollHeight + "px";
   };
 
+  // Componente de ícone de erro
+  const ErrorIcon = () => (
+    <div
+      className="absolute right-2 top-1/2 -translate-y-1/2 text-red-500"
+      role="alert"
+      aria-hidden="true"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="20"
+        height="20"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
+        <circle cx="12" cy="12" r="10" />
+        <line x1="12" y1="8" x2="12" y2="12" />
+        <line x1="12" y1="16" x2="12.01" y2="16" />
+      </svg>
+    </div>
+  );
+
   const inputClass =
     "peer text-white dark:text-white pl-2 h-[40px] min-h-[40px] pr-[40px] leading-normal appearance-none resize-none box-border text-base w-full text-inherit block text-left border border-solid bg-zinc-800 dark:bg-zinc-800 rounded-[10px] m-0 p-0 outline-0 focus-visible:outline-0 focus-visible:border-teal-500 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#71717a2e] dark:focus-visible:ring-[#14b8a61a] peer-invalid:border-red-500";
   const labelClass =
@@ -58,7 +83,7 @@ const ContactForm = forwardRef<HTMLElement, unknown>((props, ref) => {
     "cursor-text text-white dark:text-white inline-block z-0 text-sm mb-px font-normal text-start select-none absolute duration-300 transform origin-[0] translate-x-[32px] peer-focus-visible:text-teal-500 peer-focus-visible:translate-x-[8px] peer-[:not(:placeholder-shown)]:translate-x-[8px] peer-focus-visible:translate-y-[-75px] peer-[:not(:placeholder-shown)]:translate-y-[-48px]";
 
   return (
-    <section ref={ref} id="contact" className="py-20 bg-gray-50 dark:bg-gray-800">
+    <section id="contact" className="py-20 bg-gray-50 dark:bg-gray-800">
       <div className="container mx-auto px-6 max-w-2xl">
         <h2 className="text-3xl font-bold mb-12 text-center text-white dark:text-white">
           Faça Seu Orçamento Conosco
@@ -69,11 +94,12 @@ const ContactForm = forwardRef<HTMLElement, unknown>((props, ref) => {
               {/* Campo Nome */}
               <div className="[--clr:#ffffff] dark:[--clr:#ffffff] relative flex flex-row items-center">
                 <input
-                  {...register("name", { required: "Campo obrigatório" })}
+                  {...register("name", { required: true })}
                   id="name"
                   type="text"
                   placeholder=" "
                   className={inputClass}
+                  aria-invalid={errors.name ? "true" : "false"}
                 />
                 <label htmlFor="name" className={labelClass}>
                   Seu nome
@@ -94,11 +120,7 @@ const ContactForm = forwardRef<HTMLElement, unknown>((props, ref) => {
                     <path d="M16 12v1.5a2.5 2.5 0 0 0 5 0v-1.5a9 9 0 1 0 -5.5 8.28" />
                   </svg>
                 </span>
-                {errors.name && (
-                  <p className="text-red-500 text-sm mt-1">
-                    {errors.name.message}
-                  </p>
-                )}
+                {errors.name && <ErrorIcon />}
               </div>
 
               {/* Campo Empresa */}
@@ -133,11 +155,12 @@ const ContactForm = forwardRef<HTMLElement, unknown>((props, ref) => {
               {/* Campo Email */}
               <div className="[--clr:#ffffff] dark:[--clr:#ffffff] relative flex flex-row items-center">
                 <input
-                  {...register("email", { required: "Campo obrigatório" })}
+                  {...register("email", { required: true })}
                   id="email"
                   type="email"
                   placeholder=" "
                   className={inputClass}
+                  aria-invalid={errors.email ? "true" : "false"}
                 />
                 <label htmlFor="email" className={labelClass}>
                   Seu email
@@ -158,11 +181,7 @@ const ContactForm = forwardRef<HTMLElement, unknown>((props, ref) => {
                     <path d="m3 7 9 6 9-6" />
                   </svg>
                 </span>
-                {errors.email && (
-                  <p className="text-red-500 text-sm mt-1">
-                    {errors.email.message}
-                  </p>
-                )}
+                {errors.email && <ErrorIcon />}
               </div>
 
               {/* Campo Telefone */}
@@ -216,9 +235,9 @@ const ContactForm = forwardRef<HTMLElement, unknown>((props, ref) => {
                     type="checkbox"
                     value={service}
                     {...register("services")}
-                    className="sr-only" // Esconde o input mas mantém a acessibilidade
+                    className="sr-only"
                   />
-                  <span className="text-white dark:text-white">{service}</span>
+                  <span className="text-white">{service}</span>
                 </label>
               ))}
             </div>
@@ -227,37 +246,45 @@ const ContactForm = forwardRef<HTMLElement, unknown>((props, ref) => {
           {/* Campo Mensagem */}
           <div className="[--clr:#ffffff] dark:[--clr:#ffffff] relative flex flex-row items-center">
             <textarea
-              {...register("message", { required: "Campo obrigatório" })}
+              {...register("message", { required: true })}
               id="message"
               placeholder=" "
               className={`${inputClass} min-h-[120px] !pr-[40px] !pt-4 overflow-hidden peer`}
               value={messageContent}
               onInput={handleMessageInput}
               style={{ height: "auto" }}
+              aria-invalid={errors.message ? "true" : "false"}
             />
-            <label
-              htmlFor="message"
-              className={messageLabelClass} // Usando a nova classe
-            >
+            <label htmlFor="message" className={messageLabelClass}>
               Mensagem
             </label>
-            {errors.message && (
-              <p className="text-red-500 text-sm mt-1">
-                {errors.message.message}
-              </p>
-            )}
+            {errors.message && <ErrorIcon />}
           </div>
 
           <button
             type="submit"
-            className="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition dark:bg-blue-700 dark:hover:bg-blue-800 font-medium mt-8"
+            className="cssbuttons-io-button w-full mt-8"
           >
-            Enviar
+            <span>Enviar</span>
+            <span className="icon">
+              <svg
+                height="24"
+                width="24"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path d="M0 0h24v24H0z" fill="none"></path>
+                <path
+                  d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z"
+                  fill="currentColor"
+                ></path>
+              </svg>
+            </span>
           </button>
         </form>
       </div>
     </section>
   );
-});
+};
 
 export default ContactForm;
