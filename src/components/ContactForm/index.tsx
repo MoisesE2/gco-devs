@@ -85,7 +85,7 @@ const ContactForm = () => {
   return (
     <section id="contact" className="py-20 bg-gray-50 dark:bg-gray-800">
       <div className="container mx-auto px-6 max-w-2xl">
-        <h2 className="text-3xl font-bold mb-12 text-center text-white dark:text-white">
+        <h2 className="text-3xl font-bold mb-12 text-center text-gray dark:text-white">
           Faça Seu Orçamento Conosco
         </h2>
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-8">
@@ -124,7 +124,7 @@ const ContactForm = () => {
               </div>
 
               {/* Campo Empresa */}
-              <div className="[--clr:#ffffff] dark:[--clr:#ffffff] relative flex flex-row items-center">
+              <div className="[--clr:#000000] dark:[--clr:#ffffff] relative flex flex-row items-center">
                 <input
                   {...register("company")}
                   id="company"
@@ -217,7 +217,7 @@ const ContactForm = () => {
 
           {/* Serviços de Interesse */}
           <div className="pt-4">
-            <label className="block mb-4 text-white dark:text-white">
+            <label className="block mb-4 text-gray dark:text-white">
               Serviços de interesse
             </label>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -235,14 +235,16 @@ const ContactForm = () => {
                     type="checkbox"
                     value={service}
                     {...register("services")}
-                    className="sr-only"
+                    className="sr-only peer"
                   />
-                  <span className="text-white">{service}</span>
+                  <span className="text-black peer-checked:text-white transition-colors">
+                    {service}
+                  </span>
                 </label>
               ))}
             </div>
           </div>
-
+        
           {/* Campo Mensagem */}
           <div className="[--clr:#ffffff] dark:[--clr:#ffffff] relative flex flex-row items-center">
             <textarea
@@ -261,10 +263,7 @@ const ContactForm = () => {
             {errors.message && <ErrorIcon />}
           </div>
 
-          <button
-            type="submit"
-            className="cssbuttons-io-button w-full mt-8"
-          >
+          <button type="submit" className="cssbuttons-io-button w-full mt-8">
             <span>Enviar</span>
             <span className="icon">
               <svg
