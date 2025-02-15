@@ -8,20 +8,20 @@ import {
 const Diferenciais = () => {
   const diferenciais = [
     {
-      icon: <CurrencyDollarIcon className="h-12 w-12 text-current" />,
-      title: "Preços Justos",
+      icon: <CurrencyDollarIcon className="h-12 w-12 text-current" />, 
+      title: "Preços Justos", 
       moreText:
         "Acreditamos que um site profissional não precisa custar uma fortuna, mas também não pode faltar com qualidade.",
     },
     {
-      icon: <DevicePhoneMobileIcon className="h-12 w-12 text-current" />,
-      title: "Sites Responsivos",
+      icon: <DevicePhoneMobileIcon className="h-12 w-12 text-current" />, 
+      title: "Sites Responsivos", 
       moreText:
         "Sites que se adaptam a todo tipo de dispositivo trazem maior conforto aos seus clientes e melhoram a experiência do usuário.",
     },
     {
-      icon: <ComputerDesktopIcon className="h-12 w-12 text-current" />,
-      title: "Design Profissional",
+      icon: <ComputerDesktopIcon className="h-12 w-12 text-current" />, 
+      title: "Design Profissional", 
       moreText:
         "Interfaces modernas e funcionais. Cada projeto recebe uma nova cara inteligente, combinando estética e funcionalidade para valorizar sua marca.",
     },
@@ -42,8 +42,10 @@ const Diferenciais = () => {
               whileHover={{ scale: 1.02 }}
             >
               <div className="content relative z-10">
-                <div className="mb-6 moving-gradient-icon">
-                  {diferencial.icon}
+                <div className="mb-6 icon-container">
+                  <span className="moving-gradient-icon">
+                    {diferencial.icon}
+                  </span>
                 </div>
                 <h3 className="title text-2xl font-bold mb-3 dark:text-gray-100 transition-opacity">
                   {diferencial.title}
@@ -67,7 +69,7 @@ const Diferenciais = () => {
             para o seu negócio.
           </p>
           <div className="inline-block p-4 bg-blue-50 dark:bg-blue-900/20 rounded-lg">
-            <p className="moving-gradient font-medium">
+            <p className="moving-gradient font-medium text-transparent bg-clip-text bg-gradient-to-r from-[#729ed0] to-[#463bd1] animate-gradient">
               "Sua presença online merece a excelência que só profissionais
               dedicados podem oferecer!"
             </p>
@@ -82,7 +84,7 @@ const Diferenciais = () => {
           content: "";
           width: 20%;
           height: 20%;
-          background: rgba(139, 92, 246, 0.1);
+          background: rgba(70, 59, 209, 0.1);
           transition: all 0.5s;
         }
 
@@ -103,9 +105,10 @@ const Diferenciais = () => {
           width: 100%;
           height: 100%;
           border-radius: 15px;
-          background: rgba(59, 130, 246, 0.1);
+          background: rgba(70, 59, 209, 0.1);
         }
 
+        .card:hover .icon-container,
         .card:hover .title {
           opacity: 0;
         }
@@ -114,28 +117,33 @@ const Diferenciais = () => {
           opacity: 1;
         }
 
+        .moving-gradient-icon svg {
+          fill: url(#gradient);
+        }
+
         @keyframes gradientMove {
           0% {
-            background-position: 0% 50%;
-          }
-          50% {
-            background-position: 100% 50%;
+            stop-color: #729ed0;
           }
           100% {
-            background-position: 0% 50%;
+            stop-color: #463bd1;
           }
         }
 
-        .moving-gradient-icon svg {
-          fill: url(#gradient);
+        .animate-gradient {
+          background-size: 200% 200%;
+          animation: gradientMove 3s infinite alternate;
         }
       `}</style>
 
       <svg width="0" height="0" aria-hidden="true">
         <linearGradient id="gradient" gradientTransform="rotate(90)">
-          <stop offset="0%" stopColor="#8b5cf6" />
-          <stop offset="50%" stopColor="#3b82f6" />
-          <stop offset="100%" stopColor="#8b5cf6" />
+          <stop offset="0%" stopColor="#729ed0">
+            <animate attributeName="stop-color" values="#729ed0;#463bd1;#729ed0" dur="3s" repeatCount="indefinite" />
+          </stop>
+          <stop offset="100%" stopColor="#463bd1">
+            <animate attributeName="stop-color" values="#463bd1;#729ed0;#463bd1" dur="3s" repeatCount="indefinite" />
+          </stop>
         </linearGradient>
       </svg>
     </section>

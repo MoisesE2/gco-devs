@@ -48,7 +48,6 @@ const Banner = () => {
         .cssbuttons-io-button {
           background: #4f46e5; /* Cor indigo-600 */
           color: white;
-          font-family: inherit;
           padding: 0.35em;
           padding-left: 1.2em;
           font-size: 17px;
