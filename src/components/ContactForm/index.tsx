@@ -19,7 +19,7 @@ const ContactForm = () => {
 
   const onSubmit = async (data: FormData) => {
     try {
-      const response = await fetch("http://localhost:5000/api/contact", {
+      const response = await fetch("https://api.boloko.cloud/api/contact", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
