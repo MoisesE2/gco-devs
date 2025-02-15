@@ -51,7 +51,7 @@ const ContactForm = () => {
   // Componente de ícone de erro
   const ErrorIcon = () => (
     <div
-      className="absolute right-2 top-1/2 -translate-y-1/2 text-red-500"
+      className="absolute right-2 top-1/2 -translate-y-1/2 text-gray-400"
       role="alert"
       aria-hidden="true"
     >
