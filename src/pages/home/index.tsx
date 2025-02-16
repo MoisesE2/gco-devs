@@ -54,7 +54,7 @@ const HomePage = () => {
       {/* Chatbot Button */}
       {!chatOpen && (
         <button
-          className="fixed bottom-4 right-4 bg-blue-600 text-white p-3 rounded-full shadow-lg hover:bg-blue-700 transition"
+          className="fixed bottom-4 right-4 bg-blue-600 text-white p-3 rounded-full shadow-lg hover:bg-blue-700 transition z-[99999]"
           onClick={() => setChatOpen(true)}
         >
           <MessageCircle size={24} />
@@ -63,7 +63,7 @@ const HomePage = () => {
 
       {/* Chatbot */}
       {chatOpen && (
-        <div className="fixed bottom-4 right-4 w-[calc(100%-2rem)] max-w-80 bg-gray-800 shadow-xl rounded-lg overflow-hidden z-[9999]">
+        <div className="fixed bottom-4 right-4 w-[calc(100%-2rem)] max-w-80 bg-gray-800 shadow-xl rounded-lg overflow-hidden z-[99999]">
           <div className="flex flex-col h-[400px]">
             {/* Cabeçalho */}
             <div className="px-4 py-3 border-b border-gray-600 flex justify-between items-center">
