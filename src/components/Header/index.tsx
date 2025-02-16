@@ -15,7 +15,6 @@ const Header = () => {
     { name: "Equipe", target: "team" },
   ];
 
-  // Efeito de scroll para mudança de background e progresso
   useEffect(() => {
     const handleScroll = () => {
       const scrolled = window.scrollY > 50;
@@ -30,7 +29,6 @@ const Header = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Animação dos itens do menu
   const navVariants = {
     hidden: { opacity: 0, y: -20 },
     visible: (i: number) => ({
@@ -40,32 +38,35 @@ const Header = () => {
     })
   };
 
-  // Animação do menu mobile
   const mobileMenuVariants = {
-    open: { 
+    open: {
       opacity: 1,
       height: "auto",
-      transition: { staggerChildren: 0.1, when: "beforeChildren" }
+      transition: {
+        staggerChildren: 0.1,
+        when: "beforeChildren"
+      }
     },
-    closed: { 
+    closed: {
       opacity: 0,
       height: 0,
-      transition: { staggerChildren: 0.05, staggerDirection: -1 }
+      transition: {
+        when: "afterChildren",
+        staggerChildren: 0.05,
+        staggerDirection: -1
+      }
     }
   };
 
   return (
     <header
       className={`fixed w-full z-50 ${
-        isScrolled ? "bg-gray-800/95 backdrop-blur-sm" : "bg-transparent"
+        isScrolled || isOpen ? "bg-gray-800/95 backdrop-blur-sm" : "bg-transparent"
       } transition-all duration-300`}
       style={{
-        boxShadow: isScrolled
-          ? "0 4px 10px rgba(0,0,0,0.5), 0 0 20px #162238, inset 0 0 10px #162238"
-          : "0 0 20px #162238, inset 0 0 10px #162238"
+        boxShadow: "0 0 20px #162238, inset 0 0 10px #162238"
       }}
     >
-      {/* Barra de progresso de scroll */}
       <motion.div 
         className="h-1 bg-blue-400"
         style={{ width: `${scrollProgress}%` }}
@@ -79,7 +80,6 @@ const Header = () => {
             initial={{ opacity: 0, scale: 0.5 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ type: "spring", stiffness: 100 }}
-            whileHover={{ scale: 1.05 }}
             className="cursor-pointer"
           >
             <span className="text-2xl font-bold text-blue-400">Logo</span>
@@ -91,11 +91,7 @@ const Header = () => {
             aria-label={isOpen ? "Fechar menu" : "Abrir menu"}
           >
             <motion.div whileTap={{ scale: 0.9 }}>
-              {isOpen ? (
-                <XMarkIcon className="h-6 w-6" />
-              ) : (
-                <Bars3Icon className="h-6 w-6" />
-              )}
+              {isOpen ? <XMarkIcon className="h-6 w-6" /> : <Bars3Icon className="h-6 w-6" />}
             </motion.div>
           </button>
 
@@ -107,24 +103,16 @@ const Header = () => {
                 animate="visible"
                 custom={i}
                 variants={navVariants}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
               >
                 <Link
                   to={item.target}
                   smooth={true}
                   duration={500}
-                  className="relative text-gray-300 hover:text-blue-400 transition-colors cursor-pointer group"
+                  className="text-gray-300 hover:text-blue-400 transition-colors cursor-pointer"
                   spy={true}
                   offset={-80}
                 >
                   {item.name}
-                  <motion.span
-                    className="absolute bottom-0 left-0 w-0 h-[2px] bg-blue-400"
-                    initial={{ width: 0 }}
-                    whileHover={{ width: "100%" }}
-                    transition={{ duration: 0.3 }}
-                  />
                 </Link>
               </motion.div>
             ))}
@@ -135,13 +123,14 @@ const Header = () => {
           {isOpen && (
             <motion.div
               key="mobile-menu"
-              className="md:hidden overflow-hidden"
+              className="md:hidden"
               initial="closed"
               animate="open"
               exit="closed"
               variants={mobileMenuVariants}
+              style={{ overflow: "hidden" }}
             >
-              <motion.div className="mt-4 space-y-4">
+              <div className="pt-4 pb-8 space-y-4"> {/* Aumentei o padding */}
                 {navItems.map((item) => (
                   <motion.div
                     key={item.name}
@@ -154,7 +143,7 @@ const Header = () => {
                       to={item.target}
                       smooth={true}
                       duration={500}
-                      className="block p-3 text-gray-300 hover:bg-gray-700 rounded-lg transition-colors cursor-pointer"
+                      className="block px-4 py-3 text-gray-300 hover:bg-gray-700 rounded-lg transition-colors cursor-pointer"
                       onClick={() => setIsOpen(false)}
                       spy={true}
                       offset={-80}
@@ -163,7 +152,7 @@ const Header = () => {
                     </Link>
                   </motion.div>
                 ))}
-              </motion.div>
+              </div>
             </motion.div>
           )}
         </AnimatePresence>
