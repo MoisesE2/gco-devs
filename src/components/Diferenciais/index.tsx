@@ -28,9 +28,9 @@ const Diferenciais = () => {
   ];
 
   return (
-    <section className="py-20 bg-gray-50 dark:bg-gray-800">
+    <section className="py-20 bg-gray-800 dark:bg-gray-800">
       <div className="container mx-auto px-6">
-        <h2 className="text-4xl font-bold mb-16 text-center dark:text-gray-100">
+        <h2 className="text-4xl font-bold mb-16 text-center text-gray-100 dark:text-gray-100">
           NOSSOS DIFERENCIAIS
         </h2>
 
@@ -38,7 +38,7 @@ const Diferenciais = () => {
           {diferenciais.map((diferencial, index) => (
             <motion.div
               key={index}
-              className="card relative p-8 bg-white dark:bg-gray-700 rounded-xl shadow-sm cursor-pointer"
+              className="card relative p-8 bg-gray-700 dark:bg-gray-700 rounded-xl shadow-sm cursor-pointer"
               whileHover={{ scale: 1.02 }}
             >
               <div className="content relative z-10">
@@ -47,10 +47,10 @@ const Diferenciais = () => {
                     {diferencial.icon}
                   </span>
                 </div>
-                <h3 className="title text-2xl font-bold mb-3 dark:text-gray-100 transition-opacity">
+                <h3 className="title text-2xl font-bold mb-3 text-gray-100 dark:text-gray-100 transition-opacity">
                   {diferencial.title}
                 </h3>
-                <p className="description absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full px-4 text-gray-600 dark:text-gray-300 opacity-0 transition-opacity">
+                <p className="description absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full px-4 text-gray-300 dark:text-gray-300 opacity-0 transition-opacity">
                   {diferencial.moreText}
                 </p>
               </div>
@@ -61,14 +61,14 @@ const Diferenciais = () => {
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
-          className="mt-16 max-w-3xl mx-auto text-center text-gray-600 dark:text-gray-300 space-y-4"
+          className="mt-16 max-w-3xl mx-auto text-center text-gray-300 dark:text-gray-300 space-y-4"
         >
           <p>
             Nossa equipe especializada combina tecnologia de ponta com soluções
             criativas para entregar resultados que realmente fazem a diferença
             para o seu negócio.
           </p>
-          <div className="inline-block p-4 bg-blue-50 dark:bg-blue-900/20 rounded-lg">
+          <div className="inline-block p-4 bg-blue-900/20 dark:bg-blue-900/20 rounded-lg">
             <p className="moving-gradient font-medium text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600 animate-gradient">
               "Sua presença online merece a excelência que só profissionais
               dedicados podem oferecer!"

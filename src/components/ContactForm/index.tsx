@@ -83,7 +83,7 @@ const ContactForm = () => {
     "cursor-text text-white dark:text-white inline-block z-0 text-sm mb-px font-normal text-start select-none absolute duration-300 transform origin-[0] translate-x-[32px] peer-focus-visible:text-teal-500 peer-focus-visible:translate-x-[8px] peer-[:not(:placeholder-shown)]:translate-x-[8px] peer-focus-visible:translate-y-[-75px] peer-[:not(:placeholder-shown)]:translate-y-[-48px]";
 
   return (
-    <section id="contact" className="py-20 bg-gray-50 dark:bg-gray-800">
+    <section id="contact" className="py-20 bg-gray-800 dark:bg-gray-800">
       <div className="container mx-auto px-6 max-w-2xl">
         <h2 className="text-3xl font-bold mb-12 text-center text-gray dark:text-white">
           Faça Seu Orçamento Conosco
