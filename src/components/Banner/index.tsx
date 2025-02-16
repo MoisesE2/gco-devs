@@ -34,10 +34,28 @@ const Banner = () => {
   return (
     <section
       id="banner"
-      className="pt-32 pb-24"
+      className="pt-32 pb-24 relative"
       style={{ backgroundColor: "#101828" }}
     >
-      <div className="container mx-auto px-6">
+      {/* Container do padrão geométrico modificado */}
+      <div className="absolute inset-0 opacity-30">
+        <div className="h-full w-full"
+          style={{
+            background: `
+              linear-gradient(135deg, #0000 18.75%, #2563EB 0 31.25%, #0000 0),
+              linear-gradient(45deg, #0000 18.75%, #9333EA 0 31.25%, #0000 0),
+              linear-gradient(135deg, #0000 18.75%, #2563EB 0 31.25%, #0000 0),
+              linear-gradient(45deg, #0000 18.75%, #9333EA 0 31.25%, #0000 0)`,
+            backgroundSize: "40px 40px",
+            backgroundPosition: 
+              "0 0, 0 0, 20px 20px, 20px 20px",
+            animation: "slide 4s linear infinite"
+          }}>
+        </div>
+      </div>
+
+      {/* Conteúdo */}
+      <div className="container mx-auto px-6 relative">
         <motion.div
           initial={{ y: 50, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
@@ -76,15 +94,25 @@ const Banner = () => {
           </div>
         </motion.div>
       </div>
-      
+
       <style jsx global>{`
+        @keyframes slide {
+          to {
+            background-position: 
+              40px 0,
+              40px 0,
+              60px 20px,
+              60px 20px;
+          }
+        }
+
         /* Suaviza todos os scrolls na página */
         html {
           scroll-behavior: smooth;
         }
         
         .cssbuttons-io-button {
-          background: linear-gradient(45deg, #2563eb, #9333ea);
+          background: linear-gradient(45deg, #2563EB, #9333EA);
           color: white;
           padding: 0.35em;
           padding-left: 1.2em;
@@ -105,7 +133,7 @@ const Banner = () => {
         }
         
         .cssbuttons-io-button:hover {
-          background: linear-gradient(45deg, #9333ea, #2563eb);
+          background: linear-gradient(45deg, #9333EA, #2563EB);
           box-shadow: inset 0 0 1.6em -0.6em #7e22ce;
         }
         
@@ -131,7 +159,7 @@ const Banner = () => {
         .cssbuttons-io-button .icon svg {
           width: 1.1em;
           transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-          color: #2563eb;
+          color: #2563EB;
         }
         
         .cssbuttons-io-button:hover .icon svg {
