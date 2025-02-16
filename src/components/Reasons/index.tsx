@@ -78,8 +78,25 @@ const Reasons = () => {
   ];
 
   return (
-    <section id="reasons" className="py-20 bg-gray-800 dark:bg-gray-900">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="reasons" className="py-20 bg-gray-800 dark:bg-gray-900 relative">
+      {/* Padrão geométrico de fundo */}
+      <div className="absolute inset-0 opacity-20">
+        <div className="h-full w-full"
+          style={{
+            background: `
+              linear-gradient(135deg, #0000 18.75%, #3B82F6 0 31.25%, #0000 0),
+              linear-gradient(45deg, #0000 18.75%, #8B5CF6 0 31.25%, #0000 0),
+              linear-gradient(135deg, #0000 18.75%, #3B82F6 0 31.25%, #0000 0),
+              linear-gradient(45deg, #0000 18.75%, #8B5CF6 0 31.25%, #0000 0)`,
+            backgroundSize: "40px 40px",
+            backgroundPosition: 
+              "0 0, 0 0, 20px 20px, 20px 20px",
+            animation: "slide 4s linear infinite"
+          }}>
+        </div>
+      </div>
+
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center text-gray-100">
           10 Motivos para ter um site
         </h2>
@@ -137,6 +154,18 @@ const Reasons = () => {
           ))}
         </div>
       </div>
+
+      <style jsx global>{`
+        @keyframes slide {
+          to {
+            background-position: 
+              40px 0,
+              40px 0,
+              60px 20px,
+              60px 20px;
+          }
+        }
+      `}</style>
     </section>
   );
 };
