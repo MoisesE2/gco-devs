@@ -1,5 +1,7 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 
+
+
 type TeamMember = {
   id: number;
   name: string;
@@ -12,24 +14,24 @@ const Team = () => {
     const teamMembers: TeamMember[] = [
       {
         id: 1,
-        name: "João Silva",
-        role: "Desenvolvedor Front-end",
-        image: "https://via.placeholder.com/150",
-        qualifications: ["React", "TypeScript", "Tailwind CSS"],
+        name: "Melqui Morais",
+        role: "Designer",
+        image: "/images/Melqui.jpg",
+        qualifications: ["Photoshop", "Illustrator", "Premiere", "After Effects"],
       },
       {
         id: 2,
-        name: "Maria Souza",
-        role: "UI/UX Designer",
-        image: "https://via.placeholder.com/150",
-        qualifications: ["Figma", "Adobe XD", "Prototipagem"],
+        name: "Moisés Costa",
+        role: "Full Stack Developer",
+        image: "/images/Moises.jpeg",
+        qualifications: ["Figma", "React.Js", "Typescript", "Tailwind CSS"],
       },
       {
         id: 3,
-        name: "Moisés Costa",
+        name: "Francisco Oliveira",
         role: "Full Stack Developer",
         image: "https://via.placeholder.com/150",
-        qualifications: ["Node.js", "Python", "SQL"],
+        qualifications: ["Node.js", "Javascript", "Java", "Python"],
       },
     ];
   

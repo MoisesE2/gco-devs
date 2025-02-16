@@ -1,3 +1,4 @@
+import { useState, useEffect, useRef } from "react";
 import "swiper/css";
 import Footer from "../../components/Footer";
 import Newsletter from "../../components/Newsletter";
@@ -7,48 +8,110 @@ import Reasons from "../../components/Reasons";
 import Diferenciais from "../../components/Diferenciais";
 import Banner from "../../components/Banner";
 import Header from "../../components/Header";
-import { motion } from "framer-motion";
-import { ChatBubbleOvalLeftIcon } from "@heroicons/react/24/solid";
-import { useRef } from "react";
+import { Send, X, MessageCircle } from "lucide-react";
 
 const HomePage = () => {
+  const [messages, setMessages] = useState([
+    { text: "Olá, Como Posso te Ajudar Hoje?", sender: "GCO" },
+  ]);
+  const [input, setInput] = useState("");
+  const [isTyping, setIsTyping] = useState(false);
+  const [chatOpen, setChatOpen] = useState(false);
+  const chatRef = useRef<HTMLDivElement | null>(null);
 
-  const contactFormRef = useRef<HTMLDivElement>(null);
-
-  const scrollToContact = () => {
-    if (contactFormRef.current) {
-      contactFormRef.current.scrollIntoView({ behavior: "smooth" });
+  useEffect(() => {
+    if (chatRef.current) {
+      chatRef.current.scrollTop = chatRef.current.scrollHeight;
     }
+  }, [messages]);
+
+  const sendMessage = () => {
+    if (input.trim() === "") return;
+    const newMessage = { text: input, sender: "user" };
+    setMessages([...messages, newMessage]);
+    setInput("");
+    setIsTyping(true);
+
+    setTimeout(() => {
+      setMessages((prev) => [...prev, { text: "Estou aqui por você meu parça!", sender: "CGO" }]);
+      setIsTyping(false);
+    }, 1000);
   };
+
   return (
-    <div className="scroll-smooth font-sans dark:bg-gray-900">
+    <div className="scroll-smooth font-sans dark:bg-gray-900 text-white">
       <Header />
       <main>
-      <Banner scrollToContact={scrollToContact} />
+        <Banner />
         <Diferenciais />
         <Reasons />
-        <ContactForm ref={contactFormRef} />
+        <ContactForm />
         <Team />
         <Newsletter />
       </main>
       <Footer />
 
-      {/* Botão do Chat - Prioridade máxima */}
-      <motion.button
-        className="fixed bottom-4 right-4 md:bottom-8 md:right-8 bg-blue-600 text-white p-3 md:p-4 rounded-full shadow-xl hover:shadow-2xl transition-all z-[9999]"
-        aria-label="Abrir chat"
-        whileHover={{ scale: 1.1 }}
-        whileTap={{ scale: 0.9 }}
-      >
-        <div className="relative">
-          {/* Indicador de notificação */}
-          <span className="absolute -top-1 -right-1 flex h-3 w-3">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75" />
-            <span className="relative inline-flex rounded-full h-3 w-3 bg-red-500" />
-          </span>
-          <ChatBubbleOvalLeftIcon className="h-6 w-6 md:h-8 md:w-8" />
+      {/* Chatbot Button */}
+      {!chatOpen && (
+        <button
+          className="fixed bottom-4 right-4 bg-blue-600 text-white p-3 rounded-full shadow-lg hover:bg-blue-700 transition"
+          onClick={() => setChatOpen(true)}
+        >
+          <MessageCircle size={24} />
+        </button>
+      )}
+
+      {/* Chatbot */}
+      {chatOpen && (
+        <div className="fixed bottom-4 right-4 w-[calc(100%-2rem)] max-w-80 bg-gray-800 shadow-xl rounded-lg overflow-hidden z-[9999]">
+          <div className="flex flex-col h-[400px]">
+            {/* Cabeçalho */}
+            <div className="px-4 py-3 border-b border-gray-600 flex justify-between items-center">
+              <h2 className="text-lg font-semibold text-white">ChatBot GCO</h2>
+              <button onClick={() => setChatOpen(false)} className="text-white hover:text-gray-400">
+                <X size={20} />
+              </button>
+            </div>
+
+            {/* Área de Mensagens */}
+            <div
+              ref={chatRef}
+              className="flex-1 p-3 overflow-y-auto flex flex-col space-y-2 scrollbar-dark"
+            >
+              {messages.map((msg, index) => (
+                <div
+                  key={index}
+                  className={`max-w-[85%] min-w-[20%] rounded-lg px-3 py-1.5 text-sm text-white break-words ${
+                    msg.sender === "user"
+                      ? "self-end bg-blue-500 ml-4"
+                      : "self-start bg-purple-500 mr-4"
+                  }`}
+                >
+                  {msg.text}
+                </div>
+              ))}
+              {isTyping && <div className="text-gray-400 text-sm">Typing...</div>}
+            </div>
+
+            {/* Input Area */}
+            <div className="px-3 py-2 border-t border-gray-600 flex gap-2">
+              <input
+                placeholder="Type your message..."
+                className="flex-1 p-2 border rounded-lg bg-gradient-to-r from-purple-500 to-blue-500 text-white placeholder-white/70 border-none text-sm focus:outline-none focus:ring-2 focus:ring-blue-400"
+                value={input}
+                onChange={(e) => setInput(e.target.value)}
+                onKeyDown={(e) => e.key === "Enter" && sendMessage()}
+              />
+              <button
+                className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-1.5 px-3 rounded-lg transition duration-300 ease-in-out text-sm"
+                onClick={sendMessage}
+              >
+                <Send size={18} />
+              </button>
+            </div>
+          </div>
         </div>
-      </motion.button>
+      )}
     </div>
   );
 };

@@ -3,15 +3,16 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-"scripts": {
-  "dev": "vite",
-  "build": "tsc && vite build",
-  "preview": "npx serve -s dist -l 4173"
-},
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "npx serve -s dist -l 4173"
+  },
   "dependencies": {
     "@heroicons/react": "^2.2.0",
     "@tailwindcss/vite": "^4.0.6",
     "framer-motion": "^12.4.3",
+    "lucide-react": "^0.475.0",
     "phosphor-react": "^1.4.1",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",

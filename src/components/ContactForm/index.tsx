@@ -229,7 +229,7 @@ const ContactForm = () => {
               ].map((service) => (
                 <label
                   key={service}
-                  className="relative flex items-center p-3 cursor-pointer rounded-lg border-2 border-[#2d3750] transition-all has-[:checked]:border-[#435dd8] has-[:checked]:bg-[#2d3750] hover:border-[#435dd8] hover:bg-[#2a2e3c]"
+                  className="relative flex items-center p-3 cursor-pointer rounded-lg border-2 border-white transition-all has-[:checked]:border-[#435dd8] has-[:checked]:bg-[#2d3750] hover:border-[#435dd8] hover:bg-[#2d3750]"
                 >
                   <input
                     type="checkbox"
@@ -237,7 +237,7 @@ const ContactForm = () => {
                     {...register("services")}
                     className="sr-only peer"
                   />
-                  <span className="text-black peer-checked:text-white transition-colors">
+                  <span className="text-white peer-checked:text-white transition-colors">
                     {service}
                   </span>
                 </label>
